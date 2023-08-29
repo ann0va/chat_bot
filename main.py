@@ -1,4 +1,4 @@
-import update
+from config import TOKEN
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 import logging
 from telegram import Application, CallbackQueryHandler, CommandHandler, ContextTypes
@@ -124,6 +124,7 @@ async def pleasure_woman(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         [InlineKeyboardButton(text="Назад", callback_data="backword")],
         [InlineKeyboardButton(text="Головне меню", callback_data="main_menu")],
     ]
+
     reply_markup = InlineKeyboardMarkup(keyboard)
     await query.message.edit_text("Відмінно! А які конкретні побажання?",
                                   reply_markup=reply_markup)
@@ -142,15 +143,15 @@ async def erection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             ],
             [InlineKeyboardButton(text="Назад", callback_data="backword")],
             [InlineKeyboardButton(text="Головне меню", callback_data="main_menu")],
-        ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
+            ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
-        await update.callback_query.edit_message_text("О, це вже серйозно!", reply_markup=reply_markup,
+    await update.callback_query.edit_message_text("О, це вже серйозно!", reply_markup=reply_markup,
                                               disable_web_page_preview=True)
-        await update.callback_query.edit_message_text(
+    await update.callback_query.edit_message_text(
         "Для більш стійкої й крутезної ерекції ми маємо декілька варіантів: насадки, ерекційні кільця та ласо.",
         reply_markup=reply_markup, disable_web_page_preview=True)
-        await update.callback_query.edit_message_text(
+    await update.callback_query.edit_message_text(
             "Що Ви бажаєте?", reply_markup=reply_markup, disable_web_page_preview=True)
 
 
