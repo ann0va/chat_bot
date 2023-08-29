@@ -58,7 +58,7 @@ async def category_selected(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
     # You can use category_data to determine which category button was selected and perform appropriate actions.
     if category_data == "pleasure":
-        await query.edit_message_text("Ви обрали 'Відчуйте насолоду'. Оберіть опцію:  ")
+        await query.edit_message_text("Ви обрали 'Відчуйте насолоду'. Оберіть опцію:  ")  # не працює
 
         keyboard = [
             [
@@ -88,7 +88,7 @@ async def pleasure_mann(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     query.answer()
 
     category_data = query.data
-    await query.edit_message_text('Відмінно! А які конкретні побажання?')
+    await query.edit_message_text('')
 
     keyboard = [
         [
@@ -102,7 +102,7 @@ async def pleasure_mann(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await query.message.edit_text(
-        "Ви обрали категорію 'Підвищення ерекції та сексуальної функції для нього'. Виберіть далі:",
+        "Відмінно! А які конкретні побажання?",
         reply_markup=reply_markup)
 
 
@@ -146,10 +146,10 @@ async def erection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    await update.callback_query.edit_message_text("О, це вже серйозно!", reply_markup=reply_markup,
+    await update.callback_query.edit_message_text("О, це вже серйозно!", reply_markup=reply_markup,       # не працює
                                               disable_web_page_preview=True)
     await update.callback_query.edit_message_text(
-        "Для більш стійкої й крутезної ерекції ми маємо декілька варіантів: насадки, ерекційні кільця та ласо.",
+        "Для більш стійкої й крутезної ерекції ми маємо декілька варіантів: насадки, ерекційні кільця та ласо.",  # не працює
         reply_markup=reply_markup, disable_web_page_preview=True)
     await update.callback_query.edit_message_text(
             "Що Ви бажаєте?", reply_markup=reply_markup, disable_web_page_preview=True)
@@ -161,21 +161,21 @@ async  def penis_attachment(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
     category_data = query.data
 
-    await query.edit_message_text("O, це як турборежим для члена!")
-    await query.edit_message_text("Насадки на член для подовження – це як підвищення рівня на ваших ігрових ресурсах.")
+    await query.edit_message_text("O, це як турборежим для члена!") # не працює
+    await query.edit_message_text("Насадки на член для подовження – це як підвищення рівня на ваших ігрових ресурсах.") # не працює
     await query.edit_message_text(
-        "Зверни увагу, що насадки можна використовувати з лубрикантами лише на водній основі та антисептиками без спирту.")
-    await query.edit_message_text("Ось список рекомендованих товарів:")
+        "Зверни увагу, що насадки можна використовувати з лубрикантами лише на водній основі та антисептиками без спирту.") # не працює
+    await query.edit_message_text("Ось список рекомендованих товарів:")  # не працює
     await query.edit_message_text("Оберіть та дізнайтесь більше за посиланням.")
 
 async def erection_ring(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
     query.answer()
 
-    await query.edit_message_text("Доктор Крутизна вітає на борту! Давайте розберемося з ерекційними кільцями.")
-    await query.edit_message_text("Давайте розберемося з ерекційними кільцями.")
+    await query.edit_message_text("Доктор Крутизна вітає на борту! Давайте розберемося з ерекційними кільцями.") # не працює
+    await query.edit_message_text("Давайте розберемося з ерекційними кільцями.") # не працює
     await query.edit_message_text(
-        "Зверни увагу, що ерекційні кільця можна використовувати з лубрикантами лише на водній основі та антисептиками без спирту.")
+        "Зверни увагу, що ерекційні кільця можна використовувати з лубрикантами лише на водній основі та антисептиками без спирту.") # не працює
     await query.edit_message_text("Ось список рекомендованих товарів:")
 
 
@@ -195,7 +195,7 @@ async def anal_pleasure(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         [InlineKeyboardButton(text="Головне меню", callback_data="main_menu")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await query.message.edit_text("А тут ми маємо 'Ворота до Веселощів!'")
+    await query.message.edit_text("А тут ми маємо 'Ворота до Веселощів!'")  # не працює
     await query.message.edit_text("Шукаєш анальне задоволення, обери що тебе зараз цікавить?", reply_markup=reply_markup)
 
 
@@ -205,7 +205,7 @@ async def orgasm(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     category_data = query.data
 
     await query.message.edit_text(
-        "Для досягнення інтенсивних оргазмів ми маємо особливий рецепт: виберіть рекомендовану іграшку і додайте до нього лубриканти та той-клінери на водній основі.")
+        "Для досягнення інтенсивних оргазмів ми маємо особливий рецепт: виберіть рекомендовану іграшку і додайте до нього лубриканти та той-клінери на водній основі.")  # не працює
     keyboard = [
         [InlineKeyboardButton(text="Віброкульки та Віброяйця", callback_data="vibrating_balls")],
         [InlineKeyboardButton(text="Назад", callback_data="backword")],
@@ -221,7 +221,7 @@ async def pleasant_sensations(update: Update, context: ContextTypes.DEFAULT_TYPE
     category_data = query.data
 
     await query.message.edit_text(
-        "Для досягнення приємних відчуттів ми маємо особливий рецепт: виберіть рекомендовану іграшку і додайте до нього лубриканти та той-клінери на водній основі.")
+        "Для досягнення приємних відчуттів ми маємо особливий рецепт: виберіть рекомендовану іграшку і додайте до нього лубриканти та той-клінери на водній основі.")  # не працює
     keyboard = [
         [InlineKeyboardButton(text="Вібромасажер", callback_data="vibrating_massage")],
         [InlineKeyboardButton(text="Вібротруски", callback_data="vibrating_pants")],
@@ -237,7 +237,7 @@ async def double_pleasure(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     query.answer()
     category_data = query.data
     await query.message.edit_text(
-        "Для досягнення відчуття 'подвійної насолоди' ми маємо особливий рецепт: виберіть рекомендовану іграшку і додайте до нього лубриканти та той-клінери на водній основі.")
+        "Для досягнення відчуття 'подвійної насолоди' ми маємо особливий рецепт: виберіть рекомендовану іграшку і додайте до нього лубриканти та той-клінери на водній основі.")  # не працює
     keyboard = [
         [InlineKeyboardButton(text="Вібратори та трастери", callback_data="vibrating_trastor")],
         [InlineKeyboardButton(text="Назад", callback_data="backword")],
