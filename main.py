@@ -1,7 +1,7 @@
-from config import TOKEN
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 import logging
-from telegram import Application, CallbackQueryHandler, CommandHandler, ContextTypes
+from telegram import Update
+from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes
 
 
 logging.basicConfig(
