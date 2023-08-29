@@ -115,7 +115,7 @@ async def pleasure_woman(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     keyboard = [
         [
-            InlineKeyboardButton(text="Підвищення інтенсивності оргазмів", callback_data="orgasm"), #"Ви обрали категорію 'Підвищення інтенсивності оргазмів'. Виберіть далі:",
+            InlineKeyboardButton(text="Підвищення інтенсивності оргазмів", callback_data="orgasm"),
             InlineKeyboardButton(text="Приємні відчуття", callback_data="pleasant_sensations"),
             InlineKeyboardButton(text="Подвійна насолода (кліторально-вагінальна зона)",
                                  callback_data="double_pleasure"),
