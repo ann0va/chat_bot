@@ -37,14 +37,8 @@ async def ask_interests(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     keyboard = [
         [
             InlineKeyboardButton(text="Відчуйте насолоду", callback_data="pleasure"),
-        ],
-        [
             InlineKeyboardButton(text="Розкрий свою уяву", callback_data="imagination"),
-        ],
-        [
             InlineKeyboardButton(text="Подбати про здоров\'я", callback_data="health"),
-        ],
-        [
             InlineKeyboardButton(text="Придбати подарунки та сертифікати", callback_data="gifts"),
         ],
         [InlineKeyboardButton(text="Вихід", callback_data="no")],
@@ -97,11 +91,9 @@ async def pleasure_mann(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
     keyboard = [
         [
-            InlineKeyboardButton(text="Підвищення ерекції", callback_data="erection"),
-        ],
-        [   InlineKeyboardButton(text="Збільшення розміру пеніса", callback_data="increase_size"),
-        ],
-        [
+            InlineKeyboardButton(text="Підвищення ерекції та сексуальної функції для нього",
+                                 callback_data="erection"),
+            InlineKeyboardButton(text="Збільшення розміру пеніса", callback_data="increase_size"),
             InlineKeyboardButton(text="Анальне задоволення", callback_data="anal_pleasure"),
         ],
         [InlineKeyboardButton(text="Назад", callback_data="backword")],
@@ -123,14 +115,9 @@ async def pleasure_woman(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     keyboard = [
         [
             InlineKeyboardButton(text="Підвищення інтенсивності оргазмів", callback_data="orgasm"),
-        ],
-        [
             InlineKeyboardButton(text="Приємні відчуття", callback_data="pleasant_sensations"),
-        ],
-        [
-            InlineKeyboardButton(text="Подвійна насолода (кліторально-вагінальна зона)",callback_data="double_pleasure"),
-        ],
-        [
+            InlineKeyboardButton(text="Подвійна насолода (кліторально-вагінальна зона)",
+                                 callback_data="double_pleasure"),
             InlineKeyboardButton(text="Анальне задоволення", callback_data="anal_pleasure"),
         ],
         [InlineKeyboardButton(text="Назад", callback_data="backword")],
@@ -151,8 +138,6 @@ async def erection(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     keyboard = [
             [
                 InlineKeyboardButton(text="Насадки на член", callback_data="penis_attachment"),
-            ],
-            [
                 InlineKeyboardButton(text="Ерекційні кільця", callback_data="erection_ring"),
             ],
             [InlineKeyboardButton(text="Назад", callback_data="backword")],
@@ -196,14 +181,8 @@ async def anal_pleasure(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     keyboard = [
         [
             InlineKeyboardButton(text="Анальні кульки, ланцюжки, намиста", callback_data="anal_equipment"),
-        ],
-        [
             InlineKeyboardButton(text="Анальні вібратори", callback_data="anal_vibrators"),
-        ],
-        [
             InlineKeyboardButton(text="Анальні пробки", callback_data="anal_plugs"),
-        ],
-        [
             InlineKeyboardButton(text="Насадки для подвійного проникнення", callback_data="double_penetration"),
         ],
         [InlineKeyboardButton(text="Назад", callback_data="backword")],
@@ -242,7 +221,7 @@ async def pleasant_sensations(update: Update, context: ContextTypes.DEFAULT_TYPE
         [InlineKeyboardButton(text="Вібромасажер", callback_data="vibrating_massage")],
         [InlineKeyboardButton(text="Вібротруски", callback_data="vibrating_pants")],
         [InlineKeyboardButton(text="Назад", callback_data="backword")],
-        [InlineKeyboardButton(text="Головне меню", callback_data="main_menu")],#can add lybricant button and call manager
+        [InlineKeyboardButton(text="Головне меню", callback_data="main_menu")],#can lybricant button and call manager add
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await query.message.edit_text(
@@ -263,63 +242,6 @@ async def double_pleasure(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     reply_markup = InlineKeyboardMarkup(keyboard)
     await query.message.edit_text("ля досягнення відчуття 'подвійної насолоди' ми маємо особливий рецепт: виберіть рекомендовану іграшку і додайте до нього лубриканти та той-клінери на водній основі."
                                   "\nОбери те, що тебе зараз цікавить?", reply_markup=reply_markup)
-
-
-
-async def backword(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None: #doesn`t work
-    query = update.callback_query
-    query.answer()
-
-    user_menu_state = context.get("user_menu_state", None)
-
-    if user_menu_state == "pleasure":
-        await ask_interests(update, context)
-    elif user_menu_state == "pleasure_mann":
-        await category_selected(update, context)
-    elif user_menu_state == "pleasure_woman":
-        await category_selected(update, context)
-    elif user_menu_state == "erection":
-        await pleasure_man(update, context)
-    elif user_menu_state == "penis_attachment":
-        await erection(update, context)
-    elif user_menu_state == "erection_ring":
-        await erection(update, context)
-    elif user_menu_state == "increase_size":
-        await pleasure_man(update, context)
-    elif user_menu_state == "anal_pleasure":
-        await pleasure(update, context)
-    elif user_menu_state == "anal_equipment":
-        await pleasure(update, context)
-    elif user_menu_state == "anal_vibrators":
-        await pleasure(update, context)
-    elif user_menu_state =="anal_plugs":
-        await pleasure(update, context)
-    elif user_menu_state == "double_penetration":
-        await pleasure(update, context)
-    elif user_menu_state == "orgasm":
-        await pleasure_woman(update, context)
-    elif user_menu_state == "vibrating_balls":
-        await orgasm(update, context)
-    elif user_menu_state == "pleasant_sensations":
-        await pleasure_woman(update, context)
-    elif user_menu_state == "vibrating_massage":
-        await pleasant_sensations(update,context)
-    elif user_menu_state == "rvibrating_pants":
-        await pleasant_sensations(update,context)
-    elif user_menu_state == "double_pleasure":
-        await pleasure_woman(update, context)
-    elif user_name_state == "vibrating_trastor":
-        await pleasant_sensations(update,context)
-
-    # Optionally, you can send a message to indicate that the user is back in the previous menu
-    await query.edit_message_text("Ви повернулися назад.", disable_web_page_preview=True)
-
-async def main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    query = update.callback_query
-    query.answer()
-
-    # Send the main menu message with options
-    await ask_interests(update, context)
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Displays info on how to use the bot."""
@@ -343,8 +265,6 @@ def main() -> None:
     application.add_handler(CallbackQueryHandler(orgasm, pattern="^orgasm$"))
     application.add_handler(CallbackQueryHandler(pleasant_sensations, pattern="^pleasant_sensations$"))
     application.add_handler(CallbackQueryHandler(double_pleasure, pattern="^double_pleasure$"))
-    application.add_handler(CallbackQueryHandler(main_menu,pattern="^main_menu$"))
-    application.add_handler(CallbackQueryHandler(backword, pattern="^backword$"))
 
     application.add_handler(CallbackQueryHandler(help_command, pattern="^help$"))
 
