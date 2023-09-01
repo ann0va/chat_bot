@@ -18,12 +18,13 @@ logger = logging.getLogger(__name__)
 (START,
  AFTER_YES,
  CATEGORY_SELECTED,
- PLEASURE_GENDER,
+ PLEASURE_MANN,
+ PLEASURE_WOMAN,
  ERECTION,
  ERECTION_SELECTED,
  INCREASE_SIZE,
  ANAL_PLEASURE_SELECTED,
- MAIN_MENU) = range(9)
+ MAIN_MENU) = range(10)
 
 
 async def start(update: Update, _context) -> int:
@@ -100,31 +101,38 @@ async def category_selected(update: Update, context) -> int:
         return ConversationHandler.END
 
 
-async def pleasure_gender(update: Update, _context) -> int:
+async def pleasure_mann(update: Update, _context) -> int:
     user_response = update.message.text
 
     if user_response == "Чоловік":
         reply_keyboard = [
             ["Підвищення ерекції", "Збільшення розміру пеніса", "Анальне задоволення"],
-            ["Назад", "Головне меню"],
+            ["Головне меню"],
         ]
         await update.message.reply_text(
             "Відмінно! А які конкретні побажання?",
             reply_markup=ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True),
             disable_web_page_preview=True,
         )
-    elif user_response == "Жінка":
+    return PLEASURE_MANN
+
+
+async def pleasure_woman(update: Update, _context) -> int:
+    user_response = update.message.text
+
+    if user_response == "Жінка":
+
         reply_keyboard = [
             ["Підвищення інтенсивності оргазмів", "Приємні відчуття", "Подвійна насолода (кліторально-вагінальна зона)",
              "Анальне задоволення"],
-            ["Назад", "Головне меню"],
+            ["Головне меню"],
         ]
         await update.message.reply_text(
             "Відмінно! А які конкретні побажання?",
             reply_markup=ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True),
             disable_web_page_preview=True,
         )
-        return PLEASURE_GENDER
+    return PLEASURE_WOMAN
 
 
 async def main_menu(update: Update, _context) -> int:
@@ -275,15 +283,20 @@ def main() -> None:
             START: [MessageHandler(filters.Text() & ~filters.COMMAND, ask_interests)],
             AFTER_YES: [
                 MessageHandler(filters.Text() & ~filters.COMMAND, category_selected),
-                MessageHandler(filters.Text() & ~filters.COMMAND, pleasure_gender),
+                MessageHandler(filters.Text() & ~filters.COMMAND, pleasure_mann),
+                MessageHandler(filters.Text() & ~filters.COMMAND, pleasure_woman),
                 MessageHandler(filters.Text() & ~filters.COMMAND, erection),
                 MessageHandler(filters.Text() & ~filters.COMMAND, main_menu),
             ],
             CATEGORY_SELECTED: [
-                MessageHandler(filters.Text() & ~filters.COMMAND, pleasure_gender),
+                MessageHandler(filters.Text() & ~filters.COMMAND, pleasure_mann),
+                MessageHandler(filters.Text() & ~filters.COMMAND, pleasure_woman),
                 MessageHandler(filters.Text() & ~filters.COMMAND, main_menu),
             ],
-            PLEASURE_GENDER: [
+            PLEASURE_MANN: [
+                MessageHandler(filters.Text() & ~filters.COMMAND, main_menu),
+            ],
+            PLEASURE_WOMAN: [
                 MessageHandler(filters.Text() & ~filters.COMMAND, main_menu),
             ],
             ERECTION: [
