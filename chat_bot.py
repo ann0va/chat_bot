@@ -25,7 +25,7 @@ async def start(update: Update, context) -> None:
         "Вітаю! Я твій особистий консультант у світі задоволень. Почнемо з простого питання:\n\n"
         "Тобі більше 18?",
         reply_markup=ReplyKeyboardMarkup(
-            reply_keyboard, one_time_keyboard=True, input_field_placeholder="Тобі більше 18?"
+            reply_keyboard, one_time_keyboard=True, input_field_placeholder="Тобі більше 18?😏"
         ),
     )
 
@@ -54,6 +54,7 @@ async def ask_interests(update: Update, context) -> int:
 
 async def category_selected(update: Update, context) -> int:
     user_response = update.message.text
+
     if user_response == "Відчуйте насолоду":
         reply_keyboard = [
             ["Чоловік", "Жінка"],
@@ -66,6 +67,7 @@ async def category_selected(update: Update, context) -> int:
             ),
         )
         return AFTER_YES
+
     elif user_response == "Розкрий свою уяву":
         await update.message.reply_text("Ви обрали 'Розкрий свою уяву'. Поки що ця категорія знаходиться в розробці.")
     elif user_response == "Подбати про здоров'я":
