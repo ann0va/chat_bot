@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 START, AFTER_YES = range(2)
 
 
-async def start(update: Update, _context) -> int:
+async def start(update: Update, context) -> None:
     reply_keyboard = [["Так", "Ні"]]
 
     await update.message.reply_text(
@@ -32,7 +32,7 @@ async def start(update: Update, _context) -> int:
     return START
 
 
-async def ask_interests(update: Update, _context) -> int:
+async def ask_interests(update: Update, context) -> int:
     user_response = update.message.text
     if user_response == "Так":
         reply_keyboard = [
@@ -52,7 +52,7 @@ async def ask_interests(update: Update, _context) -> int:
         return ConversationHandler.END
 
 
-async def category_selected(update: Update, _context) -> int:
+async def category_selected(update: Update, context) -> int:
     user_response = update.message.text
     if user_response == "Відчуйте насолоду":
         reply_keyboard = [
@@ -66,22 +66,18 @@ async def category_selected(update: Update, _context) -> int:
             ),
         )
         return AFTER_YES
-
     elif user_response == "Розкрий свою уяву":
         await update.message.reply_text("Ви обрали 'Розкрий свою уяву'. Поки що ця категорія знаходиться в розробці.")
-        await update.message.reply_text(" Поки що ця категорія знаходиться в розробці.")
     elif user_response == "Подбати про здоров'я":
-        await update.message.reply_text("Ви обрали 'Подбати про здоров\'я'.")
-        await update.message.reply_text("Поки що ця категорія знаходиться в розробці.")
+        await update.message.reply_text("Ви обрали 'Подбати про здоров\'я'. Поки що ця категорія знаходиться в розробці.")
     elif user_response == "Придбати подарунки та сертифікати":
-        await update.message.reply_text("Ви обрали 'Придбати подарунки та сертифікати'.")
-        await update.message.reply_text(" Поки що ця категорія знаходиться в розробці.")
+        await update.message.reply_text("Ви обрали 'Придбати подарунки та сертифікати'. Поки що ця категорія знаходиться в розробці.")
     elif user_response == "Вихід":
         await update.message.reply_text("Дякую, що обрали нас!")
         return ConversationHandler.END
 
 
-async def pleasure_mann(update: Update, _context) -> int:
+async def pleasure_mann(update: Update, context) -> int:
     user_response = update.message.text
     if user_response == "Чоловік":
         reply_keyboard = [
@@ -96,7 +92,7 @@ async def pleasure_mann(update: Update, _context) -> int:
         return AFTER_YES
 
 
-async def pleasure_woman(update: Update, _context) -> int:
+async def pleasure_woman(update: Update, context) -> int:
     user_response = update.message.text
     if user_response == 'Жінка':
         reply_keyboard = [
@@ -112,14 +108,14 @@ async def pleasure_woman(update: Update, _context) -> int:
         return AFTER_YES
 
 
-async def main_menu(update: Update, _context) -> int:
+async def main_menu(update: Update, context) -> int:
     user_response = update.message.text
     if user_response == 'Головне меню':
-        await ask_interests(update, _context)
+        await ask_interests(update, context)
         return AFTER_YES
 
 
-async def cancel(update: Update, _context) -> int:
+async def cancel(update: Update, context) -> int:
     user_response = update.message.text
     if user_response == "Вихід":
         logger.info("User %s canceled the conversation.", update.message.from_user.first_name)
