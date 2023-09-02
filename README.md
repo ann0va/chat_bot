@@ -1,5 +1,3 @@
-# chat_bot
-
 # LoveSpace UA Bot
 
 ## Introduction
